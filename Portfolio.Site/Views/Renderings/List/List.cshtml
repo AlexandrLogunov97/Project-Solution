@@ -1,0 +1,28 @@
+﻿@model Portfolio.Site.Models.ProjectsViewModel
+<header class="masthead portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="input-group">
+                <input id="textQuery" type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" style="height: calc(100% - 2px);" type="button" id="button-addon2" onclick="search()">Search</button>
+                </div>
+            </div>
+        </div>
+        <br />
+        <h2 class="text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+        <hr class="star-dark mb-5">
+        <div class="row">
+            <div style="width: 20%">
+                <h4>Search filter</h4>
+                <h4 class="btn btn-secondary dropdown-toggle" style="cursor: pointer; width: 100%" onclick="showSearchFilter('categories')">Categories</h4>
+                @Html.Partial("~/Views/Renderings/List/Categories.cshtml", Model)
+                <h4 class="btn btn-secondary dropdown-toggle" style="cursor: pointer; width: 100%" onclick="showSearchFilter('tags')">Tags</h4>
+                @Html.Partial("~/Views/Renderings/List/Tags.cshtml", Model)
+            </div>
+            @Html.Partial("~/Views/Renderings/List/Results.cshtml", Model)
+        </div>
+    </div>
+</header>
+<script>
+</script>

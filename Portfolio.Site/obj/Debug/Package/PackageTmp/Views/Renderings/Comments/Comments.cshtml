@@ -1,0 +1,47 @@
+﻿@model Portfolio.Site.Models.CommentsViewModel
+<h4 class="text-center text-secondary">Comments</h4>
+<br/>
+@Html.Partial("~/Views/Renderings/Comments/List.cshtml", Model)
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#createComment").bind("click", function () {
+            var mydata =
+            {
+                id: "@Model.ProjectID",
+                comment: `${document.getElementById("textComment").value}`
+            };
+            console.log(typeof mydata.comment)
+            document.getElementById("textComment").value = "";
+            
+            if (mydata.comment.toLowerCase().trim().length > 0)
+            $.ajax({
+                url: window.location.href,
+                type: "POST",
+                context: this,
+                data: { scController: "Comments", scAction: "CreateComment", comment: mydata.comment, id: mydata.id },
+                success: function (data) {
+                    document.getElementById("commentsList").outerHTML = data;
+                },
+                error: function (data) {
+                    console.log("error", data);
+                }
+            });
+        });
+    });
+</script>
+
+<br />
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div>
+            <div class="form-group" style="display: flex; justify-content: space-between;align-items: flex-start; width:100%">
+                <div style="margin-right: 20px">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Man_silhouette.svg/200px-Man_silhouette.svg.png" height="64" width="64" alt="..." class="rounded-circle"><br />
+                </div>
+                <textarea class="form-control" name="comment" id="textComment" rows="3" placeholder="Comment"></textarea>
+            </div>
+            <button id="createComment" type="button" style="float: right" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</div>

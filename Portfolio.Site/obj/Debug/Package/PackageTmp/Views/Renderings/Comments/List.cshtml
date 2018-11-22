@@ -1,0 +1,17 @@
+﻿@model Portfolio.Site.Models.CommentsViewModel
+
+<div class="row" id="commentsList">
+    @foreach (var item in Model.Commnets)
+    {
+        <div class="col-lg-8 mx-auto" style="display: flex; justify-content: space-between;align-items: flex-start; width:100%">
+            <div style="margin-right: 20px">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Man_silhouette.svg/200px-Man_silhouette.svg.png" height="64" width="64" alt="..." class="rounded-circle"><br />
+                <b >@item.Author</b><br />
+                <b >@item.Date</b>
+            </div>
+            <div class="alert alert-secondary" role="alert" style="width:calc(100% - 84px)">
+                @Html.Raw(item.Text)
+            </div>
+        </div>
+    }
+</div>

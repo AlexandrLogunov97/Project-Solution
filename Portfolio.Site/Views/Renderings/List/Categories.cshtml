@@ -1,0 +1,29 @@
+﻿@model Portfolio.Site.Models.ProjectsViewModel
+<div id="categories" style="display: none">
+    @foreach (var item in Model.Categories)
+    {
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" name="categoriesList" data-value="@item.Name" onchange="onChangeCategory(this)" aria-label="Checkbox for following text input">
+                </div>
+            </div>
+            <h6 class="form-control">@item.Name (@item.Count)</h6>
+        </div>
+    }
+</div>
+<script>
+
+    function onChangeCategory(e) {
+        ajax({
+            scController: "Portfolio",
+            scAction: "Search",
+            query: document.getElementById("textQuery").value,
+            categories: getSelected("categoriesList").result,
+            tags: getSelected("tagsList").result,
+            page: 1
+        }, (data) => {
+            document.getElementById("projectsList").outerHTML = data;
+        }, (data) => console.log(data), "POST");
+    }
+</script>

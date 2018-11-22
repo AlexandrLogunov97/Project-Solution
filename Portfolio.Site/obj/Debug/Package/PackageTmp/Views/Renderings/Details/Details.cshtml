@@ -1,0 +1,21 @@
+﻿@using Glass.Mapper.Sc.Web.Mvc
+@model Portfolio.Site.Models.ProjectDetailsViewModel
+
+<header class="masthead">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto ">
+                @if (Model != null)
+                {
+                    <h2 class="text-secondary text-uppercase mb-0 text-center">@Html.Glass().Editable(x => x.Name)</h2>
+                    <hr class="star-dark mb-5">
+                    @Html.Glass().Editable(x => x.Image, new { @class = "img-fluid mb-5" })
+                    <h4 class="text-secondary text-center">About</h4>
+                    <p class="mb-5">@Html.Glass().Editable(x => x.Description)</p>
+                }
+            </div>
+        </div>
+        @Html.Sitecore().Placeholder("comments")
+    </div>
+</header>
+

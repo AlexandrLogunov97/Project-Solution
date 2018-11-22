@@ -1,0 +1,12 @@
+﻿#mainNav {
+    background-color: forestgreen !important;
+}
+#mainFooter {
+    background-color: forestgreen !important;
+}
+#secondaryFooter {
+    background-color: green !important;
+}
+.dropdown-toggle {
+    background-color: green;
+}

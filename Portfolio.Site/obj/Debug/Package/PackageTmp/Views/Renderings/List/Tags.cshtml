@@ -1,0 +1,19 @@
+﻿@model Portfolio.Site.Models.ProjectsViewModel
+<div id="tags" style="display: none">
+    @foreach (var item in Model.Tags)
+    {
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" name="tagsList" data-value="@item.Name" onchange="onChangeTags(this)" aria-label="Checkbox for following text input">
+                </div>
+            </div>
+            <h6 class="form-control">@item.Name (@item.Count)</h6>
+        </div>
+    }
+</div>
+<script>
+    function onChangeTags(e) {
+        search();
+    }
+</script>

@@ -1,0 +1,23 @@
+﻿@using Sitecore.Mvc;
+
+<section class="portfolio" id="portfolio">
+    <div class="container">
+        <h2 class="text-center text-uppercase text-secondary mb-0">Top</h2>
+        <hr class="star-dark mb-5">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <a id="@item.ID" class="portfolio-item d-block mx-auto" href="@Sitecore.Links.LinkManager.GetItemUrl(item)">
+                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                                More
+                            </div>
+                        </div>
+                        @Html.Sitecore().Field("Image", item, new { @class = "img-fluid" })
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>

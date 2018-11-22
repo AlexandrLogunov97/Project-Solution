@@ -1,0 +1,21 @@
+﻿@using Sitecore.Data.Fields
+@using Sitecore.Mvc.Presentation
+@using Sitecore.Data
+
+@{
+    var item = Sitecore.Context.Database.GetItem(RenderingContext.CurrentOrNull.Rendering.DataSource);
+    var result = item.GetChildren();
+
+    var socialNetworks = result.ToArray();
+}
+<h4 class="text-uppercase mb-4">Around the Web</h4>
+<ul class="list-inline mb-0">
+    @foreach (var socialNetwork in socialNetworks)
+    {
+    <li class="list-inline-item">
+        <a class="btn btn-outline-light btn-social text-center rounded-circle" href="@socialNetwork.Fields["Link"].Value">
+            <i class="fab fa-fw  @socialNetwork.Fields["View"].Value"></i>
+        </a>
+    </li>
+    }
+</ul>
